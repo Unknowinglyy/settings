@@ -59,7 +59,13 @@ set relativenumber
 set nohlsearch
 set incsearch
 set mouse=a
+
+"better tabbing?
 set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <Up> <NOP> 
