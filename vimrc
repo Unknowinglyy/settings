@@ -59,6 +59,7 @@ set relativenumber
 set nohlsearch
 set incsearch
 set mouse=a
+set tabstop=4
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <Up> <NOP> 
