@@ -1,0 +1,26 @@
+config-file = themes/rosepine
+#theme = 0x96f
+background = #000000
+background-opacity = 0.70
+background-blur = 50
+maximize = true
+
+# font-family = JetBrainsMonoNL Nerd Font
+font-family = JetBrainsMono Nerd Font
+font-size = 15
+
+cursor-style = block
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+
+#whether the top bar is shown or not
+window-decoration = none
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+window-vsync = true
+
+auto-update = check
+
+mouse-hide-while-typing = true
