@@ -68,7 +68,7 @@ set expandtab
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
-nnoremap <Up> <NOP> 
+nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
 nnoremap <Right> <NOP>
 nnoremap <Left> <NOP>
