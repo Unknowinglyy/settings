@@ -198,15 +198,18 @@ return {
 		end
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-		require("luasnip.loaders.from_vscode").lazy_load()
+		-- never use global snippets...
+		require("luasnip.loaders.from_vscode").lazy_load({
+			exclude = { "all" },
+		})
 
 		-- completion on by default
 		vim.g.cmptoggle = true
 
 		cmp.setup({
-            enabled = function()
-                return vim.g.cmptoggle
-            end,
+			enabled = function()
+				return vim.g.cmptoggle
+			end,
 			experimental = {
 				-- HACK: experimenting with ghost text
 				-- look at `toggle_ghost_text()` function below.
