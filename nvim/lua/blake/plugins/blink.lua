@@ -1,11 +1,14 @@
 return {
   "saghen/blink.cmp",
-  -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets" },
   -- use a release tag to download pre-built binaries
   version = "1.*",
 
   opts = {
+    -- want a way to toggle completions (per buffer)
+    enabled = function()
+      return vim.b.blink_enabled ~= false
+    end,
+
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
     -- 'super-tab' for mappings similar to vscode (tab to accept)
     -- 'enter' for enter to accept
@@ -26,15 +29,49 @@ return {
       nerd_font_variant = "mono",
     },
 
-    signature = { enabled = true },
+    signature = { enabled = true, window = { border = "rounded" } },
+
+    -- let wilder handle completions for the cmdline
+    cmdline = { enabled = false },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = {
+      menu = {
+        -- Don't automatically show the completion menu
+        auto_show = true,
+        border = "rounded",
+        -- should make background transparent
+        -- 0 is opaque, 100 is fully transparent
+        -- winblend = 15,
+
+        -- nvim-cmp style menu
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind" },
+          },
+        },
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
+      },
+      documentation = {
+        auto_show = false,
+        window = {
+          border = "rounded",
+          -- should make background transparent
+          -- 0 is opaque, 100 is fully transparent
+          -- winblend = 15,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+        },
+      },
+      ghost_text = { enabled = true },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
+
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      -- default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "buffer" },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
